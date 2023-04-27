@@ -11,8 +11,8 @@ CREATE TABLE department (
 
 CREATE TABLE role(
     id INT NOT NULL AUTO_INCREMENT,
-    tile VARCHAR(30) NOT NULL,
-    salary DEC NOT NULL,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
     department_id INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (department_id) REFERENCES department(id)
@@ -26,5 +26,5 @@ CREATE TABLE employee (
     manager_id INT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (role_id) REFERENCES role (id),
-    FOREIGN KEY (manager_id) REFERENCES department(id),
+    FOREIGN KEY (manager_id) REFERENCES employee(id),
 );
