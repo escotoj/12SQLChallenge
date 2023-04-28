@@ -5,7 +5,7 @@ USE headcount_inv;
 
 CREATE TABLE department (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(30) NOT NULL,
+    dep_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
 
