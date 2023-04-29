@@ -19,7 +19,7 @@ const createRole = async (req, res) => {
 };
 
 const getAllRoles= async (req, res) => {
-  const getAllRoles = 'SELECT * FROM role INNER JOIN employee ON role.title = title;';
+  const getAllRoles = 'SELECT * FROM roles INNER JOIN employee ON roles.title = title;';
 
   try {
     const [results] = await connection.query(getAllRoles);

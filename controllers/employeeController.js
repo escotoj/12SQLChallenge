@@ -1,9 +1,7 @@
 const CLI = require('../lib/CLI.js');
 const connection = require('../config/connection.js');
-// maybe create a config and connctionjs for better integration
 
 const createEmployee = async (req, res) => {
-  // pull out username from incoming request body / user input
   const {first_name} = req.body;
   const {last_name} = req.body;
   try {
@@ -18,11 +16,6 @@ const createEmployee = async (req, res) => {
 };
 
 const getAllEmployees = async (req, res) => {
-  // getting all todos
-  // const getTodos = 'SELECT id AS todoID, text AS todo FROM todos;'; // good for HW get all departments, employees//
-
-  // const groupedTodos = 'SELECT COUNT(id) AS todosCountByUser, text, completed, id, user_id  FROM todos GROUP BY user_id;';
-
   const getAllEmployees = 'SELECT * FROM employee INNER JOIN users ON employee.role_id = role.id;'; // good for HW get all depart
 
   try {
