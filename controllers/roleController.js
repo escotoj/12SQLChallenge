@@ -18,16 +18,12 @@ const createRole = async (req, res) => {
   }
 };
 
-const getAllRoles= async (req, res) => {
-  const getAllRoles = 'SELECT * FROM roles INNER JOIN employee ON roles.title = title;';
+const getAllRoles = async () => {
+  const getAllRoles = 'SELECT roles.title, roles.salary, roles.department_id, department.dep_name FROM roles INNER JOIN department ON roles.department_id = department.id;';
 
-  try {
-    const [results] = await connection.query(getAllRoles);
+    const [results] = await connection.promise().query(getAllRoles);
     // const [results] = await connection.query(getTodos);
-    res.json(results);
-  } catch (error) {
-    res.status(500).json({error});
-  };
+    return results;
 };
 
-module.exports = { createRole, getAllRoles }
+// module.exports = { createRole, getAllRoles }

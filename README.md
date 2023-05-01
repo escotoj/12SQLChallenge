@@ -19,6 +19,11 @@
   Jose Escoto
   
   ## Questions
+working out the switch case, command line works but arrows keys dont move the comand line options
+funtion is not being called for get all departments 
+foreign key is error when sourcing seeds.sql
+
+
   For more questions please contact below: 
   Email: j.escoto@gmail.com 
   GitHub: escotoj
