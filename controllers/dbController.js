@@ -27,19 +27,19 @@ const createDepartment = async () => {
 
 const createRole = async () => {
   const createRole = 'INSERT INTO roles (title, salary, department_id) VALUES (?,?,?);';
-  const [results] = await connection.promise().query(createRole, [role]);
+  const [results] = await connection.promise().query(createRole, [role.title]);
   return results;
 }
 
 const createEmployee = async () => {
   const createEmployee = 'INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);';
-  const [results] = await connection.promise().query(createEmployee, [employee]);
+  const [results] = await connection.promise().query(createEmployee, [employee.first_name, employee.last_name, role.id]);
   return results;
 }
 
 const updateEmployee = async () => {
   const updateEmployee = 'UPDATE employee SET role_id =? WHERE first_name =? AND last_name =?;';
-  const [results] = await connection.promise().query(updateEmployee, [role, employee.first_name, employee.last_name]);
+  const [results] = await connection.promise().query(updateEmployee, [employee, employee.first_name, employee.last_name]);
   return results;
 }
 
