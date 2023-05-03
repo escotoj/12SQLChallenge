@@ -1,4 +1,5 @@
 const connection = require('../config/connection.js');
+const inquirer = require('inquirer');
 
 const getAllRoles = async () => {
     const getAllRoles = 'SELECT roles.title, roles.salary, roles.department_id, department.dep_name FROM roles INNER JOIN department ON roles.department_id = roles.id;';
@@ -7,7 +8,7 @@ const getAllRoles = async () => {
   };
   const getAllEmployees = async () => {
     const getAllEmployees =
-    'SELECT employee.first_name, employee.last_name, employee.role_id, roles.title FROM employee INNER JOIN roles ON employee.manager_id = employee.id;';
+    'SELECT employee.first_name, employee.last_name, employee.role_id, roles.title FROM employee INNER JOIN roles ON employee.role_id = roles.id;';
     const [results] = await connection.promise().query(getAllEmployees);
     return results;
   };
@@ -20,15 +21,44 @@ const getAllRoles = async () => {
 };
 
 const createDepartment = async () => {
-  const createDepartment = 'INSERT INTO department (dep_name) VALUES (?);';
-  const [results] = await connection.promise().query(createDepartment, [department]);
-  return results;
-}
+inquirer.prompt(
+  {
+      type: "input",
+      message: "What is the name of your department?",
+      name: "departmentName",
+    }
 
-const createRole = async () => {
-  const createRole = 'INSERT INTO roles (title, salary, department_id) VALUES (?,?,?);';
-  const [results] = await connection.promise().query(createRole, [role.title]);
+).then(async (answer) => {
+  const createDepartment = 'INSERT INTO department (dep_name) VALUES (?);';
+  const [results] = await connection.promise().query(createDepartment, [answer.departmentName]);
+  console.log("New department added successfully");
   return results;
+})
+}
+// look into inquere list type and running inquerer in sql .then 
+const createRole = async () => {
+inquirer.prompt(
+  [{
+    type: "input",
+    message: "What is the title of your role?",
+    name: "roleName"
+
+  },
+  {
+    type: "input",
+    message: "What is the salary of your role?",
+    name: "roleSalary"
+  },
+  {
+    type: "list",
+    message: "What department does your role belong to?",
+    name: "roleDepartment",
+      }]
+  ).then(async (answer) => {
+    const createRole = 'INSERT INTO roles (title, salary, department_id) VALUES (?,?,?);';
+    const [results] = await connection.promise().query(createRole, [answer.title, answer.roleSalary, answer.roleDepartment]);
+    return results;
+  })  
 }
 
 const createEmployee = async () => {

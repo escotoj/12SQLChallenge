@@ -1,3 +1,4 @@
+-- Active: 1683133806537@@127.0.0.1@3306@headcount_inv
 INSERT INTO department (dep_name)
 VALUES 
 ('Marketing'),
@@ -20,11 +21,13 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-('John', 'Ruth', 4, 4),
-       ('Jane', 'Doe', 4, 4),
-       ('Will', 'Smith', 3, 3),
-       ('Al', 'Pacino', 3, 3),
-       ('Juan', 'ToThree', 2, 2),
+('John', 'Ruth', 4, NULL),
+       ('Jane', 'Doe', 4, 1),
+       ('Will', 'Smith', 3, 2),
+       ('Al', 'Pacino', 3, 1),
+       ('Juan', 'ToThree', 2, 3),
        ('Bob', 'DaBuilder', 2, 2),
         ('Boba', 'Fett', 2, 2),
        ('Prison', 'Mike', 2, 2);
+
+SELECT * FROM department;

@@ -20,7 +20,9 @@
   
   ## Questions
 funtion is not being called for get all employees 
-need dotenv.
+added dotenv do i add to gitignore.
+add a return to main menu funtion, need funtion to create an employee, dep and role.
+also to update. 
 
 
   For more questions please contact below: 
