@@ -1,4 +1,4 @@
-// maybe add this in a config file under connection.js something about a promise to make it asych?
+// mysql connection and dotenv are called here to connect and keep sensitive data secured
 require('dotenv').config();
 const mysql = require('mysql2');
 

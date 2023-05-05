@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const { db } = require("./lib/answers");
-
-
+// the below code is starts the prompt and executes the function from dbcontroler through the answers.js  files.
 function runPrompts() {
   inquirer
     .prompt([
@@ -22,7 +21,6 @@ function runPrompts() {
     ]).then(({ optionsList }) => {
       switch (optionsList) {
         case "View All Departments":
-          // const department = new Department();
           db.findAllDepartments(runPrompts);
           break;
         case "View All Roles":

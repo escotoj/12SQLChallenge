@@ -1,4 +1,5 @@
-const connection = require('../config/connection.js');
+// this file contains the functions that operate the comand line of the app
+const connection = require('../config/connection.js'); // database connection
 const inquirer = require('inquirer');
 
 const getAllRoles = async () => {
@@ -35,7 +36,7 @@ inquirer.prompt(
   return results;
 })
 }
-// look into inquere list type and running inquerer in sql .then 
+
 const createRole = async () => {
 inquirer.prompt(
   [{
@@ -139,5 +140,5 @@ const updateEmployee = async () => {
 }
 
 
-
+// export each function to the answers.js file that contains further functions for rendering answers inputed
   module.exports = { getAllDepartments, getAllRoles, getAllEmployees, createDepartment, createRole, createEmployee, updateEmployee };
