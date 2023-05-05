@@ -2,7 +2,7 @@ const connection = require('../config/connection.js');
 const inquirer = require('inquirer');
 
 const getAllRoles = async () => {
-    const getAllRoles = 'SELECT roles.title, roles.salary, roles.department_id, department.dep_name FROM roles INNER JOIN department ON roles.department_id = roles.id;';
+    const getAllRoles = 'SELECT roles.title, roles.salary, roles.department_id, department.dep_name FROM roles INNER JOIN department ON roles.department_id = department.id;';
       const [results] = await connection.promise().query(getAllRoles);
       return results;
   };

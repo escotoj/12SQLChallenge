@@ -1,9 +1,6 @@
 const inquirer = require("inquirer");
 const { db } = require("./lib/answers");
 
-// connection.connect ((err) => {
-//   if (err) throw err;
-// })
 
 function runPrompts() {
   inquirer
@@ -21,54 +18,7 @@ function runPrompts() {
           "Add Employee",
           "Update Employee Role",
         ],
-      },
-      // ,
-      // {
-      //   type: "input",
-      //   message: "What is the name of your department?",
-      //   name: "departmentName",
-      // },
-      // {
-      //   type: "input",
-      //   message: "What is the name of your role?",
-      //   name: "roleName",
-      // },
-      // {
-      //   type: "input",
-      //   message: "What is the salary of your role?",
-      //   name: "roleSalary",
-      // },
-      // {
-      //   type: "list",
-      //   message: "What department does your role belong to?",
-      //   name: "roleDepartment",
-      // },
-      // {
-      //     type: "input",
-      //     message: "What is the employees first name?",
-      //     name: "employeeFirstName",
-      //   },
-      //   {
-      //     type: "input",
-      //     message: "What is the employees last name?",
-      //     name: "employeeLastName",
-      //   },
-      //   {
-      //     type: "list",
-      //     message: "What is the employees role?",
-      //     name: "employeeRole",
-      //   }
-      //   ,
-      // {
-      //     type: "input",
-      //     message: "Which employee would you like to update?",
-      //     name: "employeeUpdate",
-      //   },
-      //   {
-      //     type: "input",
-      //     message: "Which role would you like to assign to this employee?",
-      //     name: "employeeUpdateRole",
-      //   }
+      }
     ]).then(({ optionsList }) => {
       switch (optionsList) {
         case "View All Departments":
