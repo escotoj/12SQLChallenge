@@ -82,13 +82,13 @@ function runPrompts() {
           db.findAllEmployees(runPrompts);
           break;
         case "Add Department":
-          db.makeNewDepartment();
+          db.makeNewDepartment(runPrompts);
           break;
         case "Add Role":
-          db.makeNewRole();
+          db.makeNewRole(runPrompts);
           break;
         case "Add Employee":
-          db.makeNewEmployee();
+          db.makeNewEmployee()
           break;
         case "Update Employee":
           db.updateEmployee();

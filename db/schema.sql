@@ -1,3 +1,4 @@
+-- Active: 1683133806537@@127.0.0.1@3306@headcount_inv
 DROP DATABASE IF EXISTS headcount_inv;
 CREATE DATABASE headcount_inv;
 

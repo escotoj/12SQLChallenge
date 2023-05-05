@@ -30,4 +30,4 @@ VALUES
         ('Boba', 'Fett', 2, 2),
        ('Prison', 'Mike', 2, 2);
 
-SELECT * FROM department;
+SELECT * FROM roles

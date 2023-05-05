@@ -15,7 +15,7 @@ const getAllRoles = async () => {
 
   const getAllDepartments = async () => {
     const getAllDepartments =
-      "SELECT * FROM department INNER JOIN roles ON roles.department_id = department.id;";
+      "SELECT * FROM department";
     const [results] = await connection.promise().query(getAllDepartments);
     return results;
 };
@@ -42,34 +42,99 @@ inquirer.prompt(
     type: "input",
     message: "What is the title of your role?",
     name: "roleName"
-
   },
   {
     type: "input",
     message: "What is the salary of your role?",
     name: "roleSalary"
   },
-  {
-    type: "list",
-    message: "What department does your role belong to?",
-    name: "roleDepartment",
+    {
+      type: "list",
+      message: "What department ID does your role belong to?",
+      name: "roleDepartment",
+      choices: [
+        "1",
+        "2",
+        "3",
+        "4"]
       }]
   ).then(async (answer) => {
     const createRole = 'INSERT INTO roles (title, salary, department_id) VALUES (?,?,?);';
-    const [results] = await connection.promise().query(createRole, [answer.title, answer.roleSalary, answer.roleDepartment]);
+    const [results] = await connection.promise().query(createRole, [answer.roleName, answer.roleSalary, answer.roleDepartment]);
+    console.log("New role added successfully");
     return results;
   })  
 }
 
 const createEmployee = async () => {
-  const createEmployee = 'INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);';
-  const [results] = await connection.promise().query(createEmployee, [employee.first_name, employee.last_name, role.id]);
-  return results;
+  inquirer.prompt(
+    [{
+                type: "input",
+                message: "What is the employees first name?",
+                name: "employeeFirstName",
+              },
+              {
+                type: "input",
+                message: "What is the employees last name?",
+                name: "employeeLastName",
+              },
+              {
+                type: "list",
+                message: "What is the employees role ID?",
+                name: "employeeRole",
+                choices: [
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+              ]
+              },
+              {
+                type: "list",
+                message: "What is your managers ID?",
+                name: "roleDepartment",
+                choices: [
+                  "1",
+                  "2",
+                  "3"]
+                }]
+      ).then(async (answer) => {
+        const createEmployee = 'INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?);';
+        const [results] = await connection.promise().query(createEmployee, [answer.employeeFirstName, answer.employeeLastName, answer.employeeRole, answer.roleDepartment]);
+        console.log("New employee added successfully");
+        return results;
+      })
+
 }
 
 const updateEmployee = async () => {
+  inquirer.prompt(
+    [{
+      type: "input",
+      message: "What is the title of your role?",
+      name: "roleName"
+  
+    },
+    {
+      type: "input",
+      message: "What is the salary of your role?",
+      name: "roleSalary"
+    },
+    {
+      type: "list",
+      message: "What department does your role belong to?",
+      name: "roleDepartment",
+      choices: [
+        "Marketing",
+        "TechOps",
+        "Human Resources",
+        "C-Suite"]
+        }]
+  )
+
   const updateEmployee = 'UPDATE employee SET role_id =? WHERE first_name =? AND last_name =?;';
   const [results] = await connection.promise().query(updateEmployee, [employee, employee.first_name, employee.last_name]);
+  console.log("Employee updated successfully");
   return results;
 }
 
